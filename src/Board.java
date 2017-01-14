@@ -19,7 +19,7 @@ public class Board {
         }
     }
 
-    public boolean place(int cord, boolean player){
+    /*public boolean place(int cord, boolean player){
         for(int[] row: board){
 
         }
@@ -27,17 +27,18 @@ public class Board {
 
     public boolean gameOver(){
 
-    }
+    } */
 
-    public void printBoard(){
+    public void draw(){
         for(int[] row: board){
             for(int piece: row){
-                System.out.println("[");
-                if(piece == 1) System.out.println(blue + "O");
-                else if(piece == 2) System.out.println(red + "O");
-                else System.out.println(" ");
-                System.out.println("]");
+                System.out.print("[");
+                if(piece == 1) System.out.print(blue + "O");
+                else if(piece == 2) System.out.print(red + "O");
+                else System.out.print(" ");
+                System.out.print("] ");
             }
+            System.out.println();
         }
     }
 }
