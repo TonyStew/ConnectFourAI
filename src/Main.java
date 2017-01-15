@@ -17,7 +17,7 @@ public class Main {
     }
 
     public static void run() {
-        //ture = player's turn, false = ai's turn
+        //true = player's turn, false = ai's turn
         boolean playersTurn = true;
 
         board.draw();

@@ -49,24 +49,28 @@ public class Board {
         for(int height = 0; height < 5; height++) {
             for (int col = 0; col < 6; col++) {
                 for (int i = -3; i <= 3; i++) {
+                    if (board[height + i][col + i] == 2) series++;
                     if (series == 4) return true;
                 }
 
                 series = 0;
 
                 for (int i = -3; i <= 3; i++) {
+                    if (board[height - i][col + i] == 2) series++;
                     if (series == 4) return true;
                 }
 
                 series = 0;
 
                 for (int i = -3; i <= 3; i++) {
+                    if (board[height + i][col] == 2) series++;
                     if (series == 4) return true;
                 }
 
                 series = 0;
 
                 for (int i = -3; i <= 3; i++) {
+                    if (board[height][col + i] == 2) series++;
                     if (series == 4) return true;
                 }
             }
