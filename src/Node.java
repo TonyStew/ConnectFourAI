@@ -4,9 +4,11 @@
 public class Node {
     public Board board;
     public int depth;
+    public boolean player;
 
-    public Node(int[][] board, int depth){
+    public Node(int[][] board, int depth, boolean player){
         this.board = new Board(board);
         this.depth = depth;
+        this.player = player;
     }
 }

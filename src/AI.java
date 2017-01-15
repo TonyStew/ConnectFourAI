@@ -11,6 +11,8 @@ public class AI {
 
     }
 
+    /*REMOVED TO BE REPLACED BY AI2
+
     private int evaluateMove(int col, int[][] board){
         int height = 0;
         int series = 0;
@@ -104,7 +106,7 @@ public class AI {
                 }
             }
         }
-        /*
+
         int choice = Integer.MAX_VALUE;
         boolean atLeastOneHigh = false;
         for (int i = 0; i < solutions.length; i++) {
@@ -120,7 +122,7 @@ public class AI {
             }
         }
         return choice;
-        */
+
 
         int choice = Integer.MAX_VALUE;
         boolean atLeastOnePositive = false;

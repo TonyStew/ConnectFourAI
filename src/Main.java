@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class Main {
 
     private static Board board;
-    private static AI ai;
+    private static AI2 ai;
 
     public static void main(String[] args) {
         //initialization
         board = new Board();
-        ai = new AI();
+        ai = new AI2();
         //run main loop
         run();
     }
