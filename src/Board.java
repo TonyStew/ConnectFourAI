@@ -44,9 +44,35 @@ public class Board {
         }
     }
 
-    //public boolean gameOver(){
+    public boolean gameOver(){
+        int series = 0;
+        for(int height = 0; height < 5; height++) {
+            for (int col = 0; col < 6; col++) {
+                for (int i = -3; i <= 3; i++) {
+                    if (series == 4) return true;
+                }
 
-    //}
+                series = 0;
+
+                for (int i = -3; i <= 3; i++) {
+                    if (series == 4) return true;
+                }
+
+                series = 0;
+
+                for (int i = -3; i <= 3; i++) {
+                    if (series == 4) return true;
+                }
+
+                series = 0;
+
+                for (int i = -3; i <= 3; i++) {
+                    if (series == 4) return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public void draw(){
         for(int[] row: board){

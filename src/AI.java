@@ -23,6 +23,7 @@ public class AI {
         }
 
         total += series * 3;
+        series = 0;
 
         for(int i = -3; i <= 3; i++){
             if(board[height - i][col + i] == 2) series++;
@@ -31,6 +32,7 @@ public class AI {
         }
 
         total += series * 3;
+        series = 0;
 
         for(int i = -3; i <= 3; i++){
             if(board[height + i][col] == 2) series++;
@@ -39,6 +41,7 @@ public class AI {
         }
 
         total += series * 3;
+        series = 0;
 
         for(int i = -3; i <= 3; i++){
             if(board[height][col + i] == 2) series++;
