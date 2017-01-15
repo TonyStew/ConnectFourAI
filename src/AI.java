@@ -7,40 +7,12 @@ public class AI {
 
     }
 
-    private int evaluateMove(int col, int[][] board){
-        int height;
-        for (int i = 5; i >= 0; i--) {
-                if(board[i][col] == 0){
-                    board[i][col] = 1;
-                }
-        }
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
+    public int getAIMove(Board board, int depth) {
+        //depth is even = AI's move
+        for (int col = 0; col <= 6; col++) {
+            board.place(col, depth % 2 == 1);
+            //TODO: recursion
+            board.
         }
     }
-
 }
