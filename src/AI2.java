@@ -65,9 +65,13 @@ public class AI2 {
             }
         }
 
+
         for(int i = 0; i < solutions.length; i++){
-            if (i != choseIndex && solutions[i] == solutions[choseIndex]) choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
+            if (i != choseIndex && solutions[i] == solutions[choseIndex] && board.getBoard()[0][i] == 0)
+                choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
         }
+
+
 
         return choseIndex;
     }

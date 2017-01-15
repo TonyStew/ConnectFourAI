@@ -55,32 +55,23 @@ public class Main {
                 System.out.println("turn: " + turn);
                 //test
                 System.out.println("AI move: ");
-                board.place(ai.getMove(board), false);
-                playersTurn = true;
-                board.draw();
-                System.out.println();
-            }
-            /*
-            else {
-                board.draw();
-                boolean validInput = false;
-                while (!validInput) {
-                    System.out.print("(AI)What row would you like to play in? (1-7): ");
-                    Scanner input = new Scanner(System.in);
-                    try {
-                        board.place(input.nextInt() - 1, false);
-                        validInput = true;
-                    } catch (Exception e) {
-                        validInput = false;
-                        System.out.println("Invalid input.");
-                        System.out.println(e);
+                if (turn == 2) {
+                    int playerMove = 0;
+                    for (int i = 0; i < 7; i++) {
+                        if (board.getBoard()[5][i] == 1)
+                            playerMove = i;
                     }
-                }
+                    if (playerMove > 4)
+                        board.place(playerMove - 1, false);
+                    else {
+                        board.place(playerMove + 1, false);
+                    }
+                } else
+                    board.place(ai.getMove(board), false);
                 playersTurn = true;
                 board.draw();
                 System.out.println();
             }
-            */
         }
     }
 }
