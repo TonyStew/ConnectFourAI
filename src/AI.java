@@ -7,7 +7,7 @@ public class AI {
 
     }
 
-    private int evaluateMove(int col){
+    private int evaluateMove(int col, Board board){
 
     }
 
