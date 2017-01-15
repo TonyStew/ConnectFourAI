@@ -93,6 +93,8 @@ public class Board {
                             if (board[height][col + i] != board[height][col]) series = 0;
                         }
                     }
+
+                    series = 0;
                 }
             }
         }
