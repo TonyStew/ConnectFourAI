@@ -1,6 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+import static sun.audio.AudioPlayer.player;
+
 /**
  * Created by birch_000 on 1/15/2017.
  */
@@ -65,4 +67,20 @@ public class AI2 {
         return choseIndex;
     }
 
+
+    public int spaceEvaluator(int col, Board board){
+        int count = 0;
+        int height = 0;
+        for (int i = 5; i >= 0; i--) {
+            if(board.getBoard()[i][col] == 0){
+                height = i;
+            }
+        }
+        for(int row = -3; row <= 3; row++){
+            for(int column = -3; column <= 3; column++){
+                if(height + row >= 0 && height + row <= 5 && col + column >= 0 && col + column <= 6 && board.getBoard()[row][column] == 0) count++;
+            }
+        }
+        return count;
+    }
 }
