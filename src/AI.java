@@ -11,5 +11,7 @@ public class AI {
 
     }
 
+    public int getAIMove(Board board){
 
+    }
 }
