@@ -20,28 +20,47 @@ public class Main {
         //ture = player's turn, false = ai's turn
         boolean playersTurn = true;
 
-        //while (!Board.gameOver()) {
+        //while (!board.gameOver()) {
         while (true) {
-            board.draw();
             //player turn
             if (playersTurn) {
-                boolean incorrectInput = false;
-                while (!incorrectInput) {
+                board.draw();
+                boolean validInput = false;
+                while (!validInput) {
                     System.out.print("What row would you like to play in? (1-7): ");
                     Scanner input = new Scanner(System.in);
                     try {
-                        board.place(input.nextInt(), true);
-                        incorrectInput = false;
+                        board.place(input.nextInt() - 1, true);
+                        validInput = true;
                     } catch (Exception e) {
-                        incorrectInput = true;
+                        validInput = false;
                         System.out.println("Invalid input.");
+                        System.out.println(e);
                     }
                 }
                 playersTurn = false;
             }
-            //ai turn
+            /*/ai turn
             else {
                 board.place(ai.getMove(), false);
+                playersTurn = true;
+            }
+            */
+            else {
+                board.draw();
+                boolean validInput = false;
+                while (!validInput) {
+                    System.out.print("(AI)What row would you like to play in? (1-7): ");
+                    Scanner input = new Scanner(System.in);
+                    try {
+                        board.place(input.nextInt() - 1, false);
+                        validInput = true;
+                    } catch (Exception e) {
+                        validInput = false;
+                        System.out.println("Invalid input.");
+                        System.out.println(e);
+                    }
+                }
                 playersTurn = true;
             }
         }
