@@ -102,11 +102,11 @@ public class AI {
         int choice = Integer.MAX_VALUE;
         boolean atLeastOneHigh = false;
         for (int i = 0; i < solutions.length; i++) {
-            if (solutions[i] > 0) atLeastOneHigh = true;
+            if (solutions[i] >= 0) atLeastOneHigh = true;
         }
         for(int i = 0; i < solutions.length; i++){
             if(solutions[i] < choice) {
-                if (atLeastOneHigh && solutions[i] > 0)
+                if (atLeastOneHigh && solutions[i] >= 0)
                     choice = i;
 
                 else if (!atLeastOneHigh)
