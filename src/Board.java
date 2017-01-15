@@ -59,7 +59,7 @@ public class Board {
 
                 for (int i = -3; i <= 3; i++) {
                     if(height - i >= 0 && height - i <= 5 && col + i >= 0 && col + i <= 6) {
-                        if (board[height - i][col + i] == board[height][col])) series++;
+                        if (board[height - i][col + i] == board[height][col]) series++;
                         if (series == 4) return true;
                     }
                 }
