@@ -49,8 +49,8 @@ public class Board {
 
     public boolean gameOver(){
         int series = 0;
-        for(int height = 0; height < 5; height++) {
-            for (int col = 0; col < 6; col++) {//for every piece
+        for(int height = 0; height <= 5; height++) {
+            for (int col = 0; col <= 6; col++) {//for every piece
                 if (board[height][col] != 0) {
                     for (int i = -3; i <= 3; i++) {//starts at 3 to the left and goes to three to the right
                         if (height + i >= 0 && height + i <= 5 && col + i >= 0 && col + i <= 6) {//checks if it is out of bounds
