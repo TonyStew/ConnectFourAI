@@ -26,17 +26,11 @@ public class Main {
             //player turn
             if (playersTurn) {
                 boolean incorrectInput = false;
-                while (incorrectInput) {
+                while (!incorrectInput) {
                     System.out.print("What row would you like to play in? (1-7): ");
                     Scanner input = new Scanner(System.in);
                     try {
-                        /*
                         board.place(input.nextInt(), true);
-                        incorrectInput = false;
-                        */
-                        int answer = input.nextInt();
-                        input.nextLine();
-                        System.out.println(answer);
                         incorrectInput = false;
                     } catch (Exception e) {
                         incorrectInput = true;
@@ -47,10 +41,7 @@ public class Main {
             }
             //ai turn
             else {
-                /*
                 board.place(ai.getMove(), false);
-                */
-                System.out.println("ai move");
                 playersTurn = true;
             }
         }
