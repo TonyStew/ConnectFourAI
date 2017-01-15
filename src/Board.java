@@ -13,14 +13,18 @@ public class Board {
 
     public void place(int col, boolean player){
         try {
-            for (int i = 0; i < 7; i++) {
+            for (int i = 5; i >= 0; i--) {
                 if(player) {
-                    if (i == 6) board[6][col] = 1;
-                    else if (board[i][col] != 0) board[i - 1][col] = 1;
+                    if(board[i][col] == 0){
+                        board[i][col] = 1;
+                        return;
+                    }
                 }
                 else{
-                    if (i == 6) board[6][col] = 2;
-                    else if (board[i][col] != 0) board[i - 1][col] = 2;
+                    if(board[i][col] == 0){
+                        board[i][col] = 2;
+                        return;
+                    }
                 }
             }
         }
