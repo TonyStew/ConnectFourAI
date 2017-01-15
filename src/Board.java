@@ -40,11 +40,11 @@ public class Board {
     public void draw(){
         for(int[] row: board){
             for(int piece: row){
-                System.out.print("[");
+                System.out.print(white + "[");
                 if(piece == 1) System.out.print(blue + "O");
                 else if(piece == 2) System.out.print(red + "O");
                 else System.out.print(" ");
-                System.out.print("] ");
+                System.out.print(white + "] ");
             }
             System.out.println();
         }
