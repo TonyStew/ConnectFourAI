@@ -8,39 +8,49 @@ public class AI {
     }
 
     private int evaluateMove(int col, int[][] board){
-        int height;
-        for (int i = 5; i >= 0; i--) {
-                if(board[i][col] == 0){
-                    board[i][col] = 1;
-                }
+        int height = 0;
+        int series = 0;
+        int total = 0;
+        for (int i = 0; i < 6; i++) {
+            if(board[i][col] != 0) {
+                height = i;
+            }
         }
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
-        }
-
-        for(int i = 0; i < 3; i++){
-
+        for(int i = -3; i <= 3; i++){
+            if(board[height + i][col + i] == 2) series++;
+            if (series == 4) total += series * 3;
+            if(board[height + i][col + i] == 1) series = 0;
         }
 
-        for(int i = 0; i < 3; i++){
+        total += series * 3;
 
+        for(int i = -3; i <= 3; i++){
+            if(board[height - i][col + i] == 2) series++;
+            if (series == 4) total += series * 3;
+            if(board[height - i][col + i] == 1) series = 0;
         }
 
-        for(int i = 0; i < 3; i++){
+        total += series * 3;
 
+        for(int i = -3; i <= 3; i++){
+            if(board[height + i][col] == 2) series++;
+            if (series == 4) total += series * 3;
+            if(board[height + i][col] == 1) series = 0;
         }
 
-        for(int i = 0; i < 3; i++){
+        total += series * 3;
 
+        for(int i = -3; i <= 3; i++){
+            if(board[height][col + i] == 2) series++;
+            if (series == 4) total += series * 3;
+            if(board[height][col + i] == 1) series = 0;
         }
 
-        for(int i = 0; i < 3; i++){
+        total += series * 3;
 
+        return total;
         }
+
     }
 
 }
