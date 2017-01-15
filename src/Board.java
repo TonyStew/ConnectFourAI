@@ -108,4 +108,20 @@ public class Board {
         }
         System.out.println(" 1   2   3   4   5   6   7");
     }
+
+    public String toString() {
+        String temp = "";
+        for (int[] row : board) {
+            for (int piece : row) {
+                temp += (white + "[");
+                if (piece == 1) temp += (blue + "O");
+                else if (piece == 2) temp += (red + "O");
+                else temp += (" ");
+                temp += (white + "] ");
+            }
+            temp += "\n";
+        }
+        temp += (" 1   2   3   4   5   6   7");
+        return temp;
+    }
 }
