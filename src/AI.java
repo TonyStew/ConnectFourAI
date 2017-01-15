@@ -1,7 +1,6 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import org.omg.CORBA.INTERNAL;
+
+import java.util.*;
 
 /**
  * Created by birch_000 on 1/14/2017.
@@ -86,27 +85,41 @@ public class AI {
             q.add(root);
             while (!q.isEmpty()) {
                 Node temp = q.poll();
-                for(int i = 0; i < 7; i++){
-                    temp.board.place(i, temp.depth % 2 == 1);
-                    if (temp.board.gameOver()) {
-                        solutions[col] = temp.depth % 2 == 1 ? -temp.depth : temp.depth;
-                        continue outerLoop;
-                    }
-                    q.add(new Node(temp.board.getBoard(), temp.depth + 1));
-                    temp.board.removePiece(i);
+                for(int i = 0; i < 7; i++) {
+                    if (temp.board.getBoard()[0][col] == 0) {
+                        temp.board.place(i, temp.depth % 2 == 1);
+                        if (temp.board.gameOver()) {
+                            solutions[col] = temp.depth % 2 == 1 ? -temp.depth : temp.depth;
+                            continue outerLoop;
+                        }
+                        q.add(new Node(temp.board.getBoard(), temp.depth + 1));
+                        temp.board.removePiece(i);
+                    } else
+                        solutions[col] = - Integer.MAX_VALUE;
                 }
             }
         }
-        int choice = 0;
+        int choice = Integer.MAX_VALUE;
         boolean atLeastOneHigh = false;
         for (int i = 0; i < solutions.length; i++) {
             if (solutions[i] > 0) atLeastOneHigh = true;
         }
         for(int i = 0; i < solutions.length; i++){
-            if(atLeastOneHigh && solutions[i] > 0) choice = Math.min(choice, solutions[i]);
-            else if (!atLeastOneHigh) choice = Math.min(choice, solutions[i]);
+            if(solutions[i] < choice) {
+                if (atLeastOneHigh && solutions[i] > 0)
+                    choice = i;
+
+                else if (!atLeastOneHigh)
+                    choice = i;
+            }
         }
         return choice;
+
+        /*
+        int choice = Integer.MAX_VALUE;
+        boolean atLeastOnePositive = false;
+        for (n :)
+        */
     }
 
     /* OLD CODE
