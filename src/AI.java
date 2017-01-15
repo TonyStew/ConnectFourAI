@@ -11,4 +11,8 @@ public class AI {
         return 0;
     }
 
+    private void evaulteMOVE(int xd) {
+
+    }
+
 }
