@@ -19,7 +19,7 @@ public class AI2 {
             root.board.place(i, root.player);
             solutions[i] = firstSolution(root);
         }
-        return choose(solutions);
+        return choose(solutions, board);
     }
 
     private int firstSolution(Node root) {
@@ -47,7 +47,7 @@ public class AI2 {
         return -1;
     }
 
-    private int choose(int[] solutions) {
+    private int choose(int[] solutions, Board board) {
         int choseIndex = 0;
         boolean containsPositive = false;
         for(int n: solutions){
@@ -55,13 +55,15 @@ public class AI2 {
         }
         if(containsPositive) {
             for (int i = 0; i < solutions.length; i++) {
-                if(solutions[choseIndex] < 0 && solutions[i] >= 0) choseIndex = i;
+                if (solutions[i] == solutions[choseIndex]) choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
+                else if(solutions[choseIndex] < 0 && solutions[i] >= 0) choseIndex = i;
                 else if (solutions[i] >= 0 && solutions[i] < solutions[choseIndex]) choseIndex = i;
             }
         }
         else {
             for(int i = 0; i < solutions.length; i++){
-                if(solutions[i] < solutions[choseIndex]) choseIndex = i;
+                if (solutions[i] == solutions[choseIndex]) choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
+                else if(solutions[i] < solutions[choseIndex]) choseIndex = i;
             }
         }
         return choseIndex;
@@ -78,7 +80,7 @@ public class AI2 {
         }
         for(int row = -3; row <= 3; row++){
             for(int column = -3; column <= 3; column++){
-                if(height + row >= 0 && height + row <= 5 && col + column >= 0 && col + column <= 6 && board.getBoard()[row][column] == 0) count++;
+                if(height + row >= 0 && height + row <= 5 && col + column >= 0 && col + column <= 6 && board.getBoard()[height + row][col + column] == 0) count++;
             }
         }
         return count;
