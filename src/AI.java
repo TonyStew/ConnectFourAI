@@ -65,10 +65,10 @@ public class AI {
         return total;
     }
 
-    public int getAIMove(Board board, int depth) {
+    public int getMove(Board board, int depth) {
         //depth is even = AI's move
         Map<Integer, Integer> m = new HashMap<>();
-        for (int col = 0; col <= 7; col++) {
+        for (int col = 0; col <= 6; col++) {
             board.place(col, depth % 2 == 1);
             m.put(col, getMaxValue(board, depth - 1));
             board.removePiece(col);
@@ -83,7 +83,7 @@ public class AI {
 
     private int getMaxValue(Board board, int depth) {
         int max = 0;
-        for (int col = 0; col <= 7; col++) {
+        for (int col = 0; col <= 6; col++) {
             board.place(col, depth % 2 == 1);
             if (depth == 0)
                 max = Math.max(max, evaluateMove(col, board.getBoard()));

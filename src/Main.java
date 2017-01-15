@@ -21,10 +21,10 @@ public class Main {
         boolean playersTurn = true;
 
         //while (!board.gameOver()) {
+        board.draw();
         while (true) {
             //player turn
             if (playersTurn) {
-                board.draw();
                 boolean validInput = false;
                 while (!validInput) {
                     System.out.print("What row would you like to play in? (1-7): ");
@@ -39,13 +39,14 @@ public class Main {
                     }
                 }
                 playersTurn = false;
+                board.draw();
             }
-            /*/ai turn
+            //ai turn
             else {
-                board.place(ai.getMove(), false);
+                board.place(ai.getMove(board, 4), false);
                 playersTurn = true;
             }
-            */
+            /*
             else {
                 board.draw();
                 boolean validInput = false;
@@ -63,6 +64,7 @@ public class Main {
                 }
                 playersTurn = true;
             }
+            */
         }
     }
 }
