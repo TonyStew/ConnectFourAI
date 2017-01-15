@@ -54,18 +54,21 @@ public class AI2 {
             if(n >= 0) containsPositive = true;
         }
         if(containsPositive) {
-            for (int i = 0; i < solutions.length; i++) {
-                if (solutions[i] == solutions[choseIndex]) choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
-                else if(solutions[choseIndex] < 0 && solutions[i] >= 0) choseIndex = i;
+            for (int i = 1; i < solutions.length; i++) {
+                if(solutions[choseIndex] < 0 && solutions[i] >= 0) choseIndex = i;
                 else if (solutions[i] >= 0 && solutions[i] < solutions[choseIndex]) choseIndex = i;
             }
         }
         else {
-            for(int i = 0; i < solutions.length; i++){
-                if (solutions[i] == solutions[choseIndex]) choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
-                else if(solutions[i] < solutions[choseIndex]) choseIndex = i;
+            for(int i = 1; i < solutions.length; i++){
+                if(solutions[i] < solutions[choseIndex]) choseIndex = i;
             }
         }
+
+        for(int i = 0; i < solutions.length; i++){
+            if (i != choseIndex && solutions[i] == solutions[choseIndex]) choseIndex = spaceEvaluator(i, board) > spaceEvaluator(choseIndex, board) ? i : choseIndex;
+        }
+
         return choseIndex;
     }
 
