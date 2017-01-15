@@ -2,10 +2,10 @@
  * Created by root on 1/14/17.
  */
 public class Board {
-    int[][] board = new int[6][7]; //row then column
-    String blue = (char)27 + "[31m";
-    String red = (char)27 + "[34m";
-    String white = (char)27 + "[38m";
+    private int[][] board = new int[6][7]; //row then column
+    private String blue = (char)27 + "[31m";
+    private String red = (char)27 + "[34m";
+    private String white = (char)27 + "[38m";
 
     public Board(int[][] board){
         this.board = board;
