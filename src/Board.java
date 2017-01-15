@@ -7,8 +7,11 @@ public class Board {
     String red = (char)27 + "[34m";
     String white = (char)27 + "[38m";
 
-    public Board(){
+    public Board(int[][] board){
+        this.board = board;
+    }
 
+    public Board(){
     }
 
     public int[][] getBoard(){ return board; }
