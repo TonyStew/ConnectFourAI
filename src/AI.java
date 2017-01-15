@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by birch_000 on 1/14/2017.
  */
@@ -52,8 +55,36 @@ public class AI {
         total += series * 3;
 
         return total;
-        }
+    }
 
+    public int getAIMove(Board board, int depth) {
+        //depth is even = AI's move
+        Map<Integer, Integer> m = new HashMap<>();
+        for (int col = 0; col <= 7; col++) {
+            board.place(col, depth % 2 == 1);
+            m.put(col, getMaxValue(board, depth - 1));
+            board.removePiece(col);
+        }
+        int maxKey = 0;
+        for (int key : m.keySet()) {
+            if (m.get(key) >= m.get(maxKey))
+                maxKey = key;
+        }
+        return maxKey;
+    }
+
+    private int getMaxValue(Board board, int depth) {
+        int max = 0;
+        for (int col = 0; col <= 7; col++) {
+            board.place(col, depth % 2 == 1);
+            if (depth == 0)
+                max = Math.max(max, evaluateMove(col, board.getBoard()));
+            else {
+                max = Math.max(max, evaluateMove(col, board.getBoard()) + getMaxValue(board, depth - 1));
+                board.removePiece(col);
+            }
+        }
+        return max;
     }
 
 }
