@@ -89,7 +89,7 @@ public class AI {
                 for(int i = 0; i < 7; i++){
                     temp.board.place(i, temp.depth % 2 == 1);
                     if (temp.board.gameOver()) {
-                        solutions[col] = temp.depth % 2 == 1 ? -1 * temp.depth : temp.depth;
+                        solutions[col] = temp.depth % 2 == 1 ? -temp.depth : temp.depth;
                         continue outerLoop;
                     }
                     q.add(new Node(temp.board.getBoard(), temp.depth + 1));

@@ -8,7 +8,11 @@ public class Board {
     private String white = (char)27 + "[38m";
 
     public Board(int[][] board){
-        this.board = board;
+        for(int row = 0; row < 6; row++){
+            for(int col = 0; col < 7; col++){
+                this.board[row][col] = board[row][col];
+            }
+        }
     }
 
     public Board(){
