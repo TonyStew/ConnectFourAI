@@ -11,6 +11,17 @@ public class Board {
 
     }
 
+    public int[][] getBoard(){ return board; }
+
+    public void removePiece(int col){
+        for (int i = 0; i < 6; i++) {
+                if(board[i][col] != 0) {
+                    board[i][col] = 0;
+                    return;
+                }
+        }
+    }
+
     public void place(int col, boolean player){
         try {
             for (int i = 5; i >= 0; i--) {

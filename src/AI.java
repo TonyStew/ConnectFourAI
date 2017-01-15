@@ -7,11 +7,40 @@ public class AI {
 
     }
 
-    private int evaluateMove(int col, Board board){
+    private int evaluateMove(int col, int[][] board){
+        int height;
+        for (int i = 5; i >= 0; i--) {
+                if(board[i][col] == 0){
+                    board[i][col] = 1;
+                }
+        }
+        for(int i = 0; i < 3; i++){
 
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
     }
 
-    public int getAIMove(Board board){
-
-    }
 }
