@@ -73,39 +73,45 @@ public class AI {
         return total;
     }
 
-    //RECURSION:
-
     public int getMove(Board board) {
         int[] solutions = new int[7];
         outerLoop:
         for (int col = 0; col <= 6; col++) {
             Node root = new Node(board.getBoard(), 0);
-            root.board.place(col, root.depth % 2 == 1);
+            root.board.place(col, root.depth % 2 == 0);
+            if (root.board.gameOver()) {
+                solutions[col] = 0;
+                continue  outerLoop;
+            }
             Queue<Node> q = new LinkedList<Node>();
+            root.depth++;
             q.add(root);
             while (!q.isEmpty()) {
-                Node temp = q.poll();
+                Node temp = q.poll();//
                 for(int i = 0; i < 7; i++) {
                     if (temp.board.getBoard()[0][col] == 0) {
-                        temp.board.place(i, temp.depth % 2 == 1);
+                        temp.board.place(i, temp.depth % 2 == 0);
+                        q.add(new Node(temp.board.getBoard(), temp.depth + 1));
                         if (temp.board.gameOver()) {
-                            solutions[col] = temp.depth % 2 == 1 ? -temp.depth : temp.depth;
+                            solutions[col] = temp.depth % 2 == 0 ? -temp.depth : temp.depth;//
                             continue outerLoop;
                         }
-                        q.add(new Node(temp.board.getBoard(), temp.depth + 1));
                         temp.board.removePiece(i);
-                    } else
-                        solutions[col] = - Integer.MAX_VALUE;
+                    } else{
+                        solutions[col] = -Integer.MAX_VALUE;
+                        continue outerLoop;
+                    }
                 }
             }
         }
+        /*
         int choice = Integer.MAX_VALUE;
         boolean atLeastOneHigh = false;
         for (int i = 0; i < solutions.length; i++) {
             if (solutions[i] >= 0) atLeastOneHigh = true;
         }
         for(int i = 0; i < solutions.length; i++){
-            if(solutions[i] < choice) {
+            if(solutions[i] < solutions[choice]) {
                 if (atLeastOneHigh && solutions[i] >= 0)
                     choice = i;
 
@@ -114,12 +120,35 @@ public class AI {
             }
         }
         return choice;
+        */
 
-        /*
         int choice = Integer.MAX_VALUE;
         boolean atLeastOnePositive = false;
-        for (n :)
-        */
+        for (int n : solutions)
+            if (n > 0)
+                atLeastOnePositive = true;
+        if (atLeastOnePositive) {
+            int smallest = Integer.MAX_VALUE;
+            int smallestIndex = 0;
+            for (int i = 0; i < solutions.length; i++) {
+                if (solutions[i] < smallest) {
+                    smallestIndex = i;
+                    smallest = solutions[i];
+                }
+            }
+            return smallestIndex;
+        } else {
+            int smallestIndex = 0;
+            int smallest = Integer.MAX_VALUE;
+            for (int i = 0; i < solutions.length; i++) {
+                if (solutions[i] < solutions[smallestIndex]) {
+                    smallestIndex = i;
+                    smallest = solutions[smallestIndex];
+                }
+            }
+            return smallestIndex;
+        }
+
     }
 
     /* OLD CODE
