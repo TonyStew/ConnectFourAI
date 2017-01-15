@@ -66,14 +66,19 @@ public class AI {
         return total;
     }
 
-    public int getMove(Board board, int depth) {
+    //returns the ShallowRed's choice of movie (0-6)
         //depth is even = AI's move
+    public int getMove(Board board, int depth) {
+        //m maps col to max total score
         Map<Integer, Integer> m = new HashMap<>();
+        //loops over each of 7 choices to find their max score
         for (int col = 0; col <= 6; col++) {
+            //places potential move, evaluates, and removes it
             board.place(col, depth % 2 == 1);
             m.put(col, getMaxValue(board, depth - 1));
             board.removePiece(col);
         }
+        //finds key with highest value (score for that move) and returns it
         int maxKey = 0;
         for (int key : m.keySet()) {
             if (m.get(key) >= m.get(maxKey))
@@ -83,6 +88,7 @@ public class AI {
     }
 
     private int getMaxValue(Board board, int depth) {
+        //max = max value of any particular move
         int max = 0;
         for (int col = 0; col <= 6; col++) {
             board.place(col, depth % 2 == 1);
@@ -95,5 +101,4 @@ public class AI {
         }
         return max;
     }
-
 }

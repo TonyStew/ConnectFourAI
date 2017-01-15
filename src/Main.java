@@ -39,11 +39,15 @@ public class Main {
                 }
                 playersTurn = false;
                 board.draw();
+                System.out.println();
             }
             //ai turn
             else {
-                board.place(ai.getMove(board, 4), false);
+                System.out.println("AI move: ");
+                board.place(ai.getMove(board, 8), false);
                 playersTurn = true;
+                board.draw();
+                System.out.println();
             }
             /*
             else {
