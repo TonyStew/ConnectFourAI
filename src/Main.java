@@ -20,9 +20,8 @@ public class Main {
         //ture = player's turn, false = ai's turn
         boolean playersTurn = true;
 
-        //while (!board.gameOver()) {
         board.draw();
-        while (true) {
+        while (!board.gameOver()) {
             //player turn
             if (playersTurn) {
                 boolean validInput = false;

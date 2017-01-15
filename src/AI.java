@@ -90,8 +90,8 @@ public class AI {
                 max = Math.max(max, evaluateMove(col, board.getBoard()));
             else {
                 max = Math.max(max, evaluateMove(col, board.getBoard()) + getMaxValue(board, depth - 1));
-                board.removePiece(col);
             }
+            board.removePiece(col);
         }
         return max;
     }
