@@ -8,11 +8,8 @@ public class AI {
     }
 
     private int evaluateMove(int col){
-        return 0;
-    }
-
-    private void evaulteMOVE(int xd) {
 
     }
+
 
 }
