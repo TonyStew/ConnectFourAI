@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 /**
  * Created by birch_000 on 1/14/2017.
@@ -72,6 +74,43 @@ public class AI {
         return total;
     }
 
+    //RECURSION:
+
+    public int getMove(Board board) {
+        int[] solutions = new int[7];
+        outerLoop:
+        for (int col = 0; col <= 6; col++) {
+            Node root = new Node(board.getBoard(), 0);
+            root.board.place(col, root.depth % 2 == 1);
+            Queue<Node> q = new LinkedList<Node>();
+            q.add(root);
+            while (!q.isEmpty()) {
+                Node temp = q.poll();
+                for(int i = 0; i < 7; i++){
+                    temp.board.place(i, temp.depth % 2 == 1);
+                    if (temp.board.gameOver()) {
+                        solutions[col] = temp.depth % 2 == 1 ? -1 * temp.depth : temp.depth;
+                        continue outerLoop;
+                    }
+                    q.add(new Node(temp.board.getBoard(), temp.depth + 1));
+                    temp.board.removePiece(i);
+                }
+            }
+        }
+        int choice = 0;
+        boolean atLeastOneHigh = false;
+        for (int i = 0; i < solutions.length; i++) {
+            if (solutions[i] > 0) atLeastOneHigh = true;
+        }
+        for(int i = 0; i < solutions.length; i++){
+            if(atLeastOneHigh && solutions[i] > 0) choice = Math.min(choice, solutions[i]);
+            else if (!atLeastOneHigh) choice = Math.min(choice, solutions[i]);
+        }
+        return choice;
+    }
+
+    /* OLD CODE
+
     //returns the ShallowRed's choice of movie (0-6)
         //depth is even = AI's move
     public int getMove(Board board, int depth) {
@@ -106,4 +145,6 @@ public class AI {
         }
         return max;
     }
+
+    */
 }

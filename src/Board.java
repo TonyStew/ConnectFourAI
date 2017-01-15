@@ -18,10 +18,10 @@ public class Board {
 
     public void removePiece(int col){
         for (int i = 0; i < 6; i++) {
-                if(board[i][col] != 0) {
-                    board[i][col] = 0;
-                    return;
-                }
+            if(board[i][col] != 0) {
+                board[i][col] = 0;
+                return;
+            }
         }
     }
 

@@ -55,7 +55,7 @@ public class Main {
                 System.out.println("turn: " + turn);
                 //test
                 System.out.println("AI move: ");
-                board.place(ai.getMove(board, 2), false);
+                board.place(ai.getMove(board), false);
                 playersTurn = true;
                 board.draw();
                 System.out.println();
