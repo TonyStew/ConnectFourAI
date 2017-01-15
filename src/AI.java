@@ -20,6 +20,7 @@ public class AI {
                 break;
             }
         }
+
         for(int i = -3; i <= 3; i++){
             if(height + i >= 0 && height + i <= 5 && col + i >= 0 && col + i <= 6) {
                 if (board[height + i][col + i] == 2) series++;
@@ -28,6 +29,7 @@ public class AI {
                 if (board[height + i][col + i] == 1) series = 0;
             }
         }
+
 
         total += series * 3;
         series = 0;
