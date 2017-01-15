@@ -48,37 +48,43 @@ public class Board {
         int series = 0;
         for(int height = 0; height < 5; height++) {
             for (int col = 0; col < 6; col++) {//for every piece
-                for (int i = -3; i <= 3; i++) {//starts at 3 to the left and goes to three to the right
-                    if(height + i >= 0 && height + i <= 5 && col + i >= 0 && col + i <= 6) {//checks if it is out of bounds
-                        if (board[height + i][col + i] == board[height][col]) series++;
-                        if (series == 4) return true;
+                if (board[height][col] != 0) {
+                    for (int i = -3; i <= 3; i++) {//starts at 3 to the left and goes to three to the right
+                        if (height + i >= 0 && height + i <= 5 && col + i >= 0 && col + i <= 6) {//checks if it is out of bounds
+                            if (board[height + i][col + i] == board[height][col]) series++;
+                            if (series == 4) return true;
+                            if (board[height + i][col + i] != board[height][col]) series = 0;
+                        }
                     }
-                }
 
-                series = 0;
+                    series = 0;
 
-                for (int i = -3; i <= 3; i++) {
-                    if(height - i >= 0 && height - i <= 5 && col + i >= 0 && col + i <= 6) {
-                        if (board[height - i][col + i] == board[height][col]) series++;
-                        if (series == 4) return true;
+                    for (int i = -3; i <= 3; i++) {
+                        if (height - i >= 0 && height - i <= 5 && col + i >= 0 && col + i <= 6) {
+                            if (board[height - i][col + i] == board[height][col]) series++;
+                            if (series == 4) return true;
+                            if (board[height - i][col + i] != board[height][col]) series = 0;
+                        }
                     }
-                }
 
-                series = 0;
+                    series = 0;
 
-                for (int i = -3; i <= 3; i++) {
-                    if(height + i >= 0 && height + i <= 5) {
-                        if (board[height + i][col] == board[height][col]) series++;
-                        if (series == 4) return true;
+                    for (int i = -3; i <= 3; i++) {
+                        if (height + i >= 0 && height + i <= 5) {
+                            if (board[height + i][col] == board[height][col]) series++;
+                            if (series == 4) return true;
+                            if (board[height + i][col] != board[height][col]) series = 0;
+                        }
                     }
-                }
 
-                series = 0;
+                    series = 0;
 
-                for (int i = -3; i <= 3; i++) {
-                    if(col + i >= 0 && col + i <= 6) {
-                        if (board[height][col + i] == board[height][col]) series++;
-                        if (series == 4) return true;
+                    for (int i = -3; i <= 3; i++) {
+                        if (col + i >= 0 && col + i <= 6) {
+                            if (board[height][col + i] == board[height][col]) series++;
+                            if (series == 4) return true;
+                            if (board[height][col + i] != board[height][col]) series = 0;
+                        }
                     }
                 }
             }
